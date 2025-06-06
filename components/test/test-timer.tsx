@@ -4,7 +4,7 @@ import { FiClock } from "react-icons/fi";
 import { Option } from "@swan-io/boxed";
 import dayjs from "dayjs";
 
-const SECOND_IN_MILISECONDS = 1000;
+const SECOND_IN_MILLISECONDS = 1000;
 
 export default function TestTimer() {
   const [elapsedTime, setElapsedTime] = useState<Option<dayjs.Dayjs>>(
@@ -21,7 +21,7 @@ export default function TestTimer() {
       setElapsedTime((elapsedTime) =>
         elapsedTime.map((elapsedTime) => elapsedTime.add(1000, "ms"))
       );
-    }, SECOND_IN_MILISECONDS);
+    }, SECOND_IN_MILLISECONDS);
 
     return () => clearTimeout(intervalId);
   }, [elapsedTime]);

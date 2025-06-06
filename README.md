@@ -69,7 +69,7 @@ PS: MBTI 测试虽然有一定的流行性，但它也有一定的争议性，�
 
 您可以 Fork 本仓库并提交 Pull Request 来进行代码贡献。
 
-英文原文文档在这里：[MBTI-personality-test.pdf](./public/MBTI-personality-test.pdf)，发现有翻译不准确的地方，欢迎完善项目中的 `/data` 部分。
+英文原文文档在这里：[MBTI-personality-test.pdf](/MBTI-personality-test.pdf)，发现有翻译不准确的地方，欢迎完善项目中的 `/data` 部分。
 
 ## 许可证
 

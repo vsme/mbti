@@ -160,7 +160,9 @@ export function getAllSavedTestResult() {
   return Future.make<Result<Option<TestResult[]>, Error>>((resolve) => {
     getDb()
       .then((db) => db.getAll(TEST_RESULT_STORE))
-      .then(Option.fromNullable)
+      .then((results) =>
+        results.length > 0 ? Option.Some(results) : Option.None()
+      )
       .then((testResult) => resolve(Result.Ok(testResult)))
       .catch((error) => resolve(Result.Error(error)));
   });
