@@ -1,4 +1,4 @@
-import { useRadio, Box } from "@chakra-ui/react";
+import { useRadio, Flex } from "@chakra-ui/react";
 
 export default function TestAnswerOption(props: any) {
   const { getInputProps, getCheckboxProps } = useRadio(props);
@@ -6,23 +6,31 @@ export default function TestAnswerOption(props: any) {
   const checkbox = getCheckboxProps();
 
   return (
-    <Box
-      w="full"
-      as="label"
-    >
+    <Flex w="full" as="label" direction="column">
       <input {...input} />
-      <Box
-        px={5}
-        py={3}
+      <Flex
+        px={6}
+        py={4}
         cursor="pointer"
-        borderWidth={1}
-        borderRadius="md"
-        borderColor="black"
+        borderWidth={2}
+        borderRadius="xl"
+        borderColor="gray.200"
+        bg="white"
         userSelect="none"
+        fontSize="md"
+        fontWeight="500"
+        transition="all 0.2s"
+        _hover={{
+          borderColor: "primary.300",
+          bg: "primary.50",
+          transform: "translateY(-1px)",
+          shadow: "md",
+        }}
         _checked={{
           bg: "primary.500",
           color: "white",
           borderColor: "primary.500",
+          shadow: "lg",
         }}
         _focus={{
           boxShadow: "outline",
@@ -30,7 +38,7 @@ export default function TestAnswerOption(props: any) {
         {...checkbox}
       >
         {props.children}
-      </Box>
-    </Box>
+      </Flex>
+    </Flex>
   );
 }

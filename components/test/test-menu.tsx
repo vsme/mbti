@@ -12,23 +12,23 @@ export default function TestMenu(props: TestMenuProps) {
     <Flex
       width="full"
       my={2}
-      px={4}
-      direction="column"
-      justifyContent="center"
-      alignItems="flex-end"
+      px={{ base: 2, md: 4 }}
+      justifyContent="flex-end"
+      alignItems="center"
       gap={2}
     >
-      <Flex>
-        <TestTimer />
-        <Button
-          aria-label="instructions"
-          variant="solid"
-          leftIcon={<RiInformationLine size={24} />}
-          onClick={props.onShowInstructionsButtonClick}
-        >
-          说明
-        </Button>
-      </Flex>
+      <TestTimer />
+      <Button
+        aria-label="instructions"
+        variant="ghost"
+        size="sm"
+        color="gray.500"
+        leftIcon={<RiInformationLine size={18} />}
+        _hover={{ bg: "gray.100" }}
+        onClick={props.onShowInstructionsButtonClick}
+      >
+        说明
+      </Button>
     </Flex>
   );
 }

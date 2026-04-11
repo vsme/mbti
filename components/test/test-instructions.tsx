@@ -1,11 +1,5 @@
-import {
-  Flex,
-  Heading,
-  Text,
-  UnorderedList,
-  ListItem,
-  Button,
-} from "@chakra-ui/react";
+import { Flex, Heading, Text, Button, Icon } from "@chakra-ui/react";
+import { FiArrowRight, FiCheckCircle } from "react-icons/fi";
 
 interface TestInstructionsProps {
   onCloseTestInstructions: () => void;
@@ -14,38 +8,46 @@ interface TestInstructionsProps {
 export default function TestInstructions(props: TestInstructionsProps) {
   return (
     <Flex
-      h="full"
-      px={4}
+      w="full"
+      bg="white"
+      rounded="2xl"
+      shadow="xl"
+      p={{ base: 6, md: 10 }}
+      mx={{ base: 2, md: 0 }}
+      my={8}
+      border="1px solid"
+      borderColor="gray.100"
       direction="column"
-      gap={8}
+      gap={6}
     >
-      <Heading>说明</Heading>
-      <Flex
-        direction="column"
-        gap={2}
-      >
-        <Text>
-          完成测试大约只需要15分钟。以下是一些完成这个测试的提示：
-        </Text>
-        <UnorderedList spacing={2}>
-          <ListItem>
-            这些问题没有正确答案。
-          </ListItem>
-          <ListItem>
-            快速回答问题，不要过度分析。有些可能措辞不当，选择你感觉最合适的答案。
-          </ListItem>
-          <ListItem>
-            根据“你实际的情况”回答问题，而不是“你希望别人如何看待你”。
-          </ListItem>
-        </UnorderedList>
+      <Heading size="lg" color="primary.600">
+        测试说明
+      </Heading>
+      <Text color="gray.600" fontSize="md">
+        完成测试大约只需要 15 分钟。以下是一些提示：
+      </Text>
+      <Flex direction="column" gap={4}>
+        {[
+          "这些问题没有正确答案，请放心作答。",
+          "快速回答问题，不要过度分析。选择你感觉最合适的答案。",
+          "根据\u201C你实际的情况\u201D回答问题，而不是\u201C你希望别人如何看待你\u201D。",
+        ].map((tip, i) => (
+          <Flex key={i} alignItems="flex-start" gap={3}>
+            <Icon as={FiCheckCircle} color="green.400" mt={1} boxSize={5} />
+            <Text color="gray.700">{tip}</Text>
+          </Flex>
+        ))}
       </Flex>
       <Button
-        w="min-content"
         colorScheme="primary"
+        size="lg"
         alignSelf="flex-end"
+        rounded="full"
+        px={8}
+        rightIcon={<FiArrowRight />}
         onClick={props.onCloseTestInstructions}
       >
-        好的，我明白了！
+        好的，开始吧！
       </Button>
     </Flex>
   );

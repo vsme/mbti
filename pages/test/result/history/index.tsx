@@ -28,7 +28,10 @@ export default function TestResultHistoryPage() {
   }, [router.isReady]);
 
   return (
-    <MainLayout>
+    <MainLayout
+      title="测试历史记录"
+      description="查看你所有的 MBTI 性格测试历史记录，回顾和比较不同时间的测试结果。"
+    >
       {testResults.match({
         NotAsked: () => <Text>加载中</Text>,
         Loading: () => <Text>加载中</Text>,

@@ -18,19 +18,22 @@ function ScoreStats(props: {
   return (
     <Flex
       py={1}
-      px={2}
+      px={3}
       gap={2}
-      rounded="md"
+      rounded="lg"
       justifyContent="space-between"
       bg="white"
+      shadow="sm"
     >
-      <Text fontWeight="semibold">
+      <Text fontWeight="bold" fontSize="sm">
         {((testScoresFiltered.length / props.testScores.length) * 100)
-          .toFixed(2)
-          .replace(/[.,]0+$/, "")}
+          .toFixed(1)
+          .replace(/\.0$/, "")}
         %
       </Text>
-      <Text>({testScoresFiltered.length})</Text>
+      <Text fontSize="sm" color="gray.500">
+        ({testScoresFiltered.length})
+      </Text>
     </Flex>
   );
 }
@@ -49,51 +52,56 @@ export default function TestResultStats(props: TestResultStatsProps) {
 
   return (
     <Flex
-      my={4}
-      mx={{ base: 0, lg: 4 }}
-      w={{
-        base: "full",
-        lg: "25%",
-      }}
-      h="min-content"
-      p={2}
-      gap={4}
-      top={5}
       direction="column"
-      pos={{
-        base: "static",
-        lg: "sticky",
-      }}
+      my={4}
+      mx={{ base: 4, lg: 4 }}
+      w={{ base: "full", lg: "25%" }}
+      h="min-content"
+      top="90px"
+      pos={{ base: "static", lg: "sticky" }}
       alignSelf="flex-start"
     >
-      <Heading
-        as="h1"
-        textAlign="center"
-        fontSize="lg"
+      <Flex
+        direction="column"
+        bg="white"
+        rounded="2xl"
+        shadow="lg"
+        border="1px solid"
+        borderColor="gray.100"
+        p={5}
       >
-        分数
-      </Heading>
-      {personalityClasses.map((personalityClass, index) => (
-        <Flex
-          key={index}
-          p={2}
-          rounded="md"
-          justifyContent="space-between"
-          alignItems="center"
-          bg={`${statsColorScheme[index]}.500`}
+        <Heading
+          as="h2"
+          textAlign="center"
+          fontSize="md"
+          mb={4}
+          color="gray.600"
         >
-          <Text
-            fontWeight="semibold"
-            color="white"
-          >
-            {personalityClass.description}
-          </Text>
-          <ScoreStats
-            testScores={props.testResult.testScores}
-            targetScore={personalityClass.type}
-          />
+          维度得分
+        </Heading>
+        <Flex direction="column" gap={3}>
+          {personalityClasses.map((personalityClass, index) => (
+            <Flex
+              key={index}
+              p={2.5}
+              rounded="xl"
+              justifyContent="space-between"
+              alignItems="center"
+              bg={`${statsColorScheme[index]}.500`}
+              transition="all 0.2s"
+              _hover={{ transform: "translateX(2px)" }}
+            >
+              <Text fontWeight="600" color="white" fontSize="sm">
+                {personalityClass.description}
+              </Text>
+              <ScoreStats
+                testScores={props.testResult.testScores}
+                targetScore={personalityClass.type}
+              />
+            </Flex>
+          ))}
         </Flex>
-      ))}
+      </Flex>
     </Flex>
   );
 }

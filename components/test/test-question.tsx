@@ -94,58 +94,62 @@ export default function TestQuestion() {
 
   return (
     <Flex
-      py={4}
+      py={6}
+      px={{ base: 2, md: 0 }}
       w="full"
       h="full"
-      gap={8}
+      gap={6}
       direction="column"
       justifyContent="space-between"
       alignItems="center"
     >
       <TestProgress />
-      <Flex direction="column">
+      <Flex
+        direction="column"
+        bg="white"
+        w="full"
+        p={8}
+        rounded="2xl"
+        shadow="lg"
+        border="1px solid"
+        borderColor="gray.100"
+        gap={3}
+        alignItems="center"
+      >
         <Text
           fontWeight="bold"
           align="center"
+          color="primary.500"
+          fontSize="sm"
         >
-          #{currentPersonalityTestIndex + 1}
+          第 {currentPersonalityTestIndex + 1} / {personalityTest.length} 题
         </Text>
-        <Text
-          fontSize="lg"
-          align="center"
-        >
+        <Text fontSize="lg" align="center" fontWeight="500" color="gray.700">
           {personalityTest[currentPersonalityTestIndex].question}
         </Text>
       </Flex>
-      <Flex
-        w="full"
-        gap={4}
-        direction="column"
-        {...group}
-      >
+      <Flex w="full" gap={3} direction="column" {...group}>
         {personalityTest[currentPersonalityTestIndex].answerOptions.map(
           (answerOption) => {
             const radio = getRadioProps({ value: answerOption.type });
 
             return (
-              <TestAnswerOption
-                key={answerOption.type}
-                {...radio}
-              >
+              <TestAnswerOption key={answerOption.type} {...radio}>
                 {answerOption.answer}
               </TestAnswerOption>
             );
           }
         )}
       </Flex>
-      <Flex
-        direction="row"
-        w="full"
-        gap={4}
-      >
+      <Flex direction="row" w="full" gap={3}>
         <Button
           w="full"
-          variant="solid"
+          variant="outline"
+          rounded="xl"
+          size="lg"
+          borderColor="gray.300"
+          color="gray.600"
+          _hover={{ bg: "gray.100" }}
           {...(currentPersonalityTestIndex === 0 && {
             disabled: true,
           })}
@@ -158,6 +162,11 @@ export default function TestQuestion() {
           <Button
             w="full"
             colorScheme="primary"
+            rounded="xl"
+            size="lg"
+            shadow="md"
+            _hover={{ shadow: "lg", transform: "translateY(-1px)" }}
+            transition="all 0.2s"
             onClick={handleSeeResultButtonClick}
           >
             查看结果
@@ -167,6 +176,8 @@ export default function TestQuestion() {
             w="full"
             colorScheme="primary"
             variant="solid"
+            rounded="xl"
+            size="lg"
             {...(!isUserAlreadyPickAnswer && {
               disabled: true,
             })}

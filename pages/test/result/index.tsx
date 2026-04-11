@@ -32,7 +32,11 @@ export default function TestResultPage() {
   }, [router.isReady, router.query.testResultId]);
 
   return (
-    <MainLayout hideBackground={true}>
+    <MainLayout
+      hideBackground={true}
+      title="测试结果"
+      description="查看你的 MBTI 性格测试结果，深入了解你的人格类型、性格特质、优势和发展建议。"
+    >
       {testResult.match({
         NotAsked: () => <Text>加载中</Text>,
         Loading: () => <Text>加载中</Text>,
@@ -43,6 +47,7 @@ export default function TestResultPage() {
               value.match({
                 Some: (data) => (
                   <Flex
+                    as="article"
                     h="full"
                     direction={{
                       base: "column",

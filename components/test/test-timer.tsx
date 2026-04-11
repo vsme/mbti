@@ -28,24 +28,24 @@ export default function TestTimer() {
 
   return (
     <Flex
-      width={110}
+      width={100}
       px={2}
-      columnGap={2}
+      columnGap={1.5}
       justifyContent="flex-start"
       alignItems="center"
-      borderColor="blackAlpha.300"
-      rounded="md"
+      color="gray.400"
+      fontSize="sm"
     >
-      <FiClock size={20} />
-      <Text fontWeight="bold">
+      <FiClock size={14} />
+      <Text fontWeight="600" fontFamily="mono" fontSize="sm">
         {elapsedTime.match({
           Some: (elapsedTime) => {
             const minute = elapsedTime.minute().toString().padStart(2, "0");
             const second = elapsedTime.second().toString().padStart(2, "0");
 
-            return `${minute} : ${second}`;
+            return `${minute}:${second}`;
           },
-          None: () => "-- : --",
+          None: () => "--:--",
         })}
       </Text>
     </Flex>

@@ -35,44 +35,49 @@ export default function TestResult(props: TestResultProps) {
         lg: "50%",
       }}
       h="full"
-      px={8}
+      px={{ base: 4, md: 8 }}
       gap={4}
       alignItems="center"
       direction="column"
     >
-      <Heading
+      {/* Type Header Card */}
+      <Flex
         id={personalityClassGroup.type}
-        as="h1"
-        textAlign="center"
+        direction="column"
+        alignItems="center"
+        bg="white"
+        w="full"
+        p={8}
+        rounded="2xl"
+        shadow="lg"
+        border="1px solid"
+        borderColor="gray.100"
+        gap={4}
       >
-        <Highlight
-          query={personalityClassGroup.type}
-          styles={{ color: "primary.500" }}
+        <Heading
+          as="h1"
+          fontSize={{ base: "4xl", md: "5xl" }}
+          fontWeight="800"
+          color="primary.600"
+          letterSpacing="-0.03em"
         >
-          { `${personalityClassGroup.type}` }
-          {/* {`${personalityClassGroup.type} - ${personalityClassGroup.name}`} */}
-        </Highlight>
-      </Heading>
-      {/* <Text
-        fontSize="lg"
-        fontWeight="bold"
-        textAlign="center"
-      >
-        {personalityClassGroup.nameDescription}
-      </Text> */}
-      <Image
-        alt="illustration"
-        src={`/images/mbti/${personalityClassGroup.type.toLocaleUpperCase()}.png`}
-        width={200}
-        height={200}
-      />
+          {personalityClassGroup.type}
+        </Heading>
+        <Image
+          alt={`${personalityClassGroup.type} 人格类型插图`}
+          src={`/images/mbti/${personalityClassGroup.type.toLocaleUpperCase()}.png`}
+          width={180}
+          height={180}
+        />
+      </Flex>
       <Heading
-        scrollMarginTop={8}
+        scrollMarginTop="100px"
         id="description"
         as="h2"
-        my={8}
+        my={6}
         fontSize="xl"
         textAlign="center"
+        color="primary.700"
       >
         {personalityClassGroup.epithet}
       </Heading>
@@ -90,7 +95,7 @@ export default function TestResult(props: TestResultProps) {
           </Text>
         ))}
       <Heading
-        scrollMarginTop={8}
+        scrollMarginTop="100px"
         id="jungian-functional-preference-ordering"
         my={4}
         as="h2"
@@ -128,7 +133,7 @@ export default function TestResult(props: TestResultProps) {
         </Tbody>
       </Table>
       <Heading
-        scrollMarginTop={8}
+        scrollMarginTop="100px"
         id="general-traits"
         my={4}
         as="h2"
@@ -149,7 +154,7 @@ export default function TestResult(props: TestResultProps) {
         ))}
       </UnorderedList>
       <Heading
-        scrollMarginTop={8}
+        scrollMarginTop="100px"
         id="relationship-strengths"
         my={4}
         as="h2"
@@ -172,7 +177,7 @@ export default function TestResult(props: TestResultProps) {
         )}
       </UnorderedList>
       <Heading
-        scrollMarginTop={8}
+        scrollMarginTop="100px"
         id="relationship-weaknesses"
         my={4}
         as="h2"
@@ -195,7 +200,7 @@ export default function TestResult(props: TestResultProps) {
         )}
       </UnorderedList>
       <Heading
-        scrollMarginTop={8}
+        scrollMarginTop="100px"
         id="success-definition"
         my={4}
         as="h2"
@@ -220,7 +225,7 @@ export default function TestResult(props: TestResultProps) {
           </Text>
         ))}
       <Heading
-        scrollMarginTop={8}
+        scrollMarginTop="100px"
         id="strengths"
         my={4}
         as="h2"
@@ -241,7 +246,7 @@ export default function TestResult(props: TestResultProps) {
         ))}
       </UnorderedList>
       <Heading
-        scrollMarginTop={8}
+        scrollMarginTop="100px"
         id="special-gifts"
         my={4}
         as="h2"
@@ -262,7 +267,7 @@ export default function TestResult(props: TestResultProps) {
         ))}
       </UnorderedList>
       <Heading
-        scrollMarginTop={8}
+        scrollMarginTop="100px"
         id="potential-problem-areas"
         my={4}
         as="h2"
@@ -304,7 +309,7 @@ export default function TestResult(props: TestResultProps) {
         </UnorderedList>
       )}
       <Heading
-        scrollMarginTop={8}
+        scrollMarginTop="100px"
         id="explanation-of-problems"
         my={4}
         as="h2"
@@ -330,7 +335,7 @@ export default function TestResult(props: TestResultProps) {
           </Text>
         ))}
       <Heading
-        scrollMarginTop={8}
+        scrollMarginTop="100px"
         id="solutions"
         my={4}
         as="h2"
@@ -352,7 +357,7 @@ export default function TestResult(props: TestResultProps) {
           </Text>
         ))}
       <Heading
-        scrollMarginTop={8}
+        scrollMarginTop="100px"
         id="living-happily-tips"
         my={4}
         as="h2"
@@ -377,7 +382,7 @@ export default function TestResult(props: TestResultProps) {
         personalityClassGroup.suggestions.length === 1 && (
           <>
             <Heading
-              scrollMarginTop={8}
+              scrollMarginTop="100px"
               id="specific-suggestions"
               my={4}
               as="h2"
@@ -406,7 +411,7 @@ export default function TestResult(props: TestResultProps) {
         personalityClassGroup.suggestions.length > 1 && (
           <>
             <Heading
-              scrollMarginTop={8}
+              scrollMarginTop="100px"
               id="specific-suggestions"
               my={4}
               as="h2"
@@ -429,7 +434,7 @@ export default function TestResult(props: TestResultProps) {
           </>
         )}
       <Heading
-        scrollMarginTop={8}
+        scrollMarginTop="100px"
         id="ten-rules-to-live-to-achieve-success"
         my={4}
         as="h2"
